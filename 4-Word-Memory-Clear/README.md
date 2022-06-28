@@ -2,24 +2,20 @@
 
 This four-word program will clear all software-accessible memory lines and registers in the G-15 to zero, plus reset the IP (double-precision sign) and FO (arithmetic overflow) flip-flops.
 
-This program was described in some detail by Jim Horning in his "The Way It Was" blog post of [31 August 2006](http://horningtales.blogspot.com/2006/08/my-shortest-program.html), but he did not provide the actual code. Paul Kimpel reconstructed the program in May 2022 from the information in Jim's post and the long comment he later appended to that post.
+This program was described in some detail by Jim Horning in his "The Way It Was" blog post of [31 August 2006](http://horningtales.blogspot.com/2006/08/my-shortest-program.html), but he did not provide the actual code. Paul Kimpel reconstructed the program in May 2022 from the information in Jim's post and the long comment he later appended to that post. The reconstruction and a detailed analysis of the program are discussed [in a blog post of Paul's](https://retro-emulation.blogspot.com/2022/06/a-g-15-four-word-memory-clear-program.html).
 
 A tape image with the code for the program is identified below. That image is in a compact form where the bits were packed into hexadecimal digits without regard to word boundaries. Thus, some hex digits contain bits from adjacent words.
-
     ```
     060235z02011vy8100yvxw04x2778s
     ```
-
 This is the 29-digit form that Jim Horning described he would have entered into the system from the G-15 typewriter after engaging the **ENABLE** switch and typing `sc7fq` -- `s`=stop any current I/O operation, `c7`=set the command line to 23, `f`=set the location of the next instruction to be executed to zero, and `q`=enable the typewriter for data input. See the _[G-15 Operating Manual](http://bitsavers.org/pdf/bendix/g-15/G15_Operating_Man_Jul59.pdf)_ for details.
 
 Note that this uses the G-15 convention for hexadecimal values 10-15, where `u`=10, `v`=11, ... `z`=15.
 
 Another form of the program, suitable for entering on the G-15 typewriter keyboard, is:
-
     ```
     060235zT 040237xT 0403uz7T 02693vwT s
     ```
-
 where `T` represents the Tab key and the spaces, which will be ignored by the system, have been inserted here for readability. Both forms can also be entered from paper tape.
 
 
