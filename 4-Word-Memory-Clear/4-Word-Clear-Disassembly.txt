@@ -1,14 +1,14 @@
-Disassembler for Bendix G-15 Paper Tape Images -- 2022-05-14 09:28
+Disassembler for Bendix G-15 Paper Tape Images -- 2024-03-01 07:51
 
 Source File: 4-Word-Clear.pti
 
 Block # 1:
 
- Raw hex     ±hex    Decimal   Fractional i/d T   N C  S  D DP BP  L  Interpretation
+ Raw hex     ±hex    Decimal   Fractional i/d T   N C  S  D DP BP WTR WRC  TT     L  Interpretation
 
-004x2778  02693vw    2528188  0.009418234 i   2 105 0 29 28        0: i TR (20.IR):1 > AR #1, nL=2, N=105*
-008075yy  0403uz7    4209399  0.015681233 i   4   3 2 23 23        1: i TVA 23:2 > 23:2 #2, nL=4, N=3*
-008046zu  040237x    4203389  0.015658844 i   4   2 0 27 29        2: i TR (20.21+20/.AR):3 > AR+ #1, nL=4, N=2
-00w046vy  060235z    6300511  0.023471233 i   6   2 0 26 31        3: i SHIFT MQ-L/ID-R:4, ++AR #6, nL=10, N=2*
+004x2778  02693vw    2528188  0.009418234 i   2 105 0 29 28         0 103 105     0: i TR (20.IR):1 > AR #1, nL=2, N=105*
+008075yy  0403uz7    4209399  0.015681233 i   4   3 2 23 23         0 107 110     1: i TVA 23:2 > 23:2 #2, nL=4, N=3*
+008046zu  040237x    4203389  0.015658844 i   4   2 0 27 29         0 106 108     2: i TR (20.21+20/.AR):3 > AR+ #1, nL=4, N=2
+00w046vy  060235z    6300511  0.023471233 i   6   2 0 26 31         0 100 107     3: i SHIFT MQ-L/ID-R:4, ++AR #6, nL=10, N=2*
 
 --END--
