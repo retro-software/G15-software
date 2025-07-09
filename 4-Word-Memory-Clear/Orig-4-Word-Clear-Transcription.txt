@@ -1,0 +1,55 @@
+                      EXAMPLE IV
+
+             Routine for Clearing Memory
+
+
+Object:  Clear memory, including 20 long lines, 4 short lines,
+         MQ, ID, and PN registers, IP flip-flop, AR, and
+         overflow indicator.
+
+         Also, use compact coding to make program as short as
+         possible.
+
+Operation: Read program tape with p, then Compute to GO.  Program
+         operates in line 23.  Execution time is 2.5 seconds.
+
+Coding:  .00   .02.05.0.29.28       Clear AR
+         .01  u.12.15.2.23.23       Executed at .05.  Line 23 is
+         .02  u.16.10.0.27.29         precessed by one word to the
+         .03   .06.10.0.26.31         form show below.  Also AR
+                                      is exchanged with 23.03.
+
+
+
+Revised form of line 23 after precession.
+
+         .00         .06.10.0.26.31    Add 3 to destination of
+                                       command in AR by means of
+                                       3-bit shift tally.
+
+         .01         .02.05.0.29.28    No longer used.
+
+         .10 (.02)  u.12.15.2.23.23    Exchange AR with 23.03, then
+                                       execute 23.03 at word .15.
+
+         .15 (.03)  u.00.00.0.00.00    Ship to .00
+                         or
+                    u.16.10.0.SS.DD    Copy SS to line DD
+
+The SS.DD combination in .03 takes on the following values:
+
+     28.00  Clear Line 00        29.13
+     28.03    (AR is clear)      29.16
+     28.06                       29.19
+     28.09                       29.22
+     28.12                       29.25  ID and PN, IP
+     28.15                       29.28
+     28.18                       29.31  Turn off overflfow indicator
+     28.21                       30.02  Line 21 has been cleared
+     28.24  MQ                   30.05  so Source 30 = 0
+     28.27  ar = 0, no test      30.08
+     28.30                       30.11
+     29.01  Source 29 = 0        30.14
+     29.04                       30.17
+     29.07                       30.20
+     29.10                       30.23  Clear out program.
