@@ -23,15 +23,33 @@ In submitting the program, he wrote:
 
     It's kind of hard to see the demons (spirals) without colors... You can change the random seed at line 1, word 24.
 
+By translating the decimal codes to glyphs of differing visual density, the pattern starts to become apparent (this example is after 14.6 hours):
+
+        #.-.#@/*+=-=-.....-=+*+=+*/@
+        .-=-.#@/*+=-.-.....-=+=+*/@#
+        -=+=-.#@/*+=-=-.-.-.-=+*/@#.
+        =+*+=-.#@/*+=+=---=-=+*/@#.-
+        +*/*+=-.#@/*+*+=====+*/@#.-=
+        */@+=-.#@/*+*/*+===+*/@#.-=+
+        /@#.-.#@/*+*/@/*+=+*/@#.-=+*
+        */@#.#@/*+*/@#@/*+*/*/@#.-=+
+        +*/@#@/*+*/@#.#@/*/@/@@#..-=
+        =+*/@/*+*/@#.-.#@/@#@/@@#-.-
+        -=+*/*+=+*/@/=-.#@#./@/@@=-=
+        *-=+*+=-=+*/*+=-.#.-.#@/@+=+
+        /=+*/*+=-=+*+=-.#.-=/@/*/*+*
+        @#.#@/*+=-=+=-...-=+*/*+*+*/
+
+
 Files:
 
 ## demon.pti
 
-An executable tape image with included (French) commented source code for the demon program. This image is not bootable. You should have previously initialized the system using a tape that contains the number track.
+An executable tape image with included (French) commented source code for the demon program. This image is not bootable. You should have previously initialized the system using a tape that contains the number track. Corrected 2025-11-18 by P.Kimpel to add missing END codes to typewriter formats.
 
 ## demon-English.pti
 
-The same file as `demon.pti` but with the comments translated from French to English using Google Translate.
+The same file as `demon.pti` but with the comments translated from French to English using Google Translate. Corrected 2025-11-18 by P.Kimpel to add missing END codes to typewriter formats.
 
 ## demon-Disassembly.txt
 
