@@ -1,0 +1,104 @@
+^`::
+SetKeyDelay ,150,,
+Send,0490810`ts
+Sleep, 3500
+Send,99040z8`ts
+Sleep, 3500
+Send,0010890`ts
+Sleep, 3500
+Send,99248z8`ts
+Sleep, 3500
+Send,0488890`ts
+Sleep, 3500
+Send,99240z8`ts
+Sleep, 3500
+Send,4490890`ts
+Sleep, 3500
+Send,99041z8`ts
+Sleep, 3500
+Send,4480810`ts
+Sleep, 3500
+Send,99241z8`ts
+Sleep, 3500
+Send,4488810`ts
+Sleep, 3500
+Send,99241z8`ts
+Sleep, 3500
+Send,0490890`ts
+Sleep, 3500
+Send,90040z8`ts
+Sleep, 3500
+Send,4010810`ts
+Sleep, 3500
+Send,99241z8`ts
+Sleep, 3500
+Send,4488810`ts
+Sleep, 3500
+Send,99241z8`ts
+Sleep, 3500
+Send,4490890`ts
+Sleep, 3500
+Send,99041z8`ts
+Sleep, 3500
+Send,4410810`ts
+Sleep, 3500
+Send,99241z8`ts
+Sleep, 3500
+Send,4488812`ts
+Sleep, 3500
+Send,99241z8`ts
+Sleep, 3500
+Send,0000810`ts
+Sleep, 3500
+Send,99040z8`ts
+Sleep, 3500
+Send,0480890`ts
+Sleep, 3500
+Send,90048z8`ts
+Sleep, 3500
+Send,0488890`ts
+Sleep, 3500
+Send,90040z8`ts
+Sleep, 3500
+
+Send,0`ts
+Sleep, 3500
+Send,0`ts
+Sleep, 3500
+
+Send,300002`ts
+Sleep, 3500
+Send,4208u4`ts
+Sleep, 3500
+Send,490930`ts
+Sleep, 3500
+Send,1730000`ts
+Sleep, 3500
+Send,1720029`ts
+Sleep, 3500
+Send,1710002`ts
+Sleep, 3500
+Send,1700000`ts
+Sleep, 3500
+Send,1420900`ts
+Sleep, 3500
+Send,4908u4`ts
+Sleep, 3500
+Send,420950`ts
+Sleep, 3500
+Send,322100`ts
+Sleep, 3500
+Send,1760939`ts
+Sleep, 3500
+Send,420930`ts
+Sleep, 3500
+Send,4908u4`ts
+Sleep, 3500
+Send,300002`ts
+Sleep, 3500
+Send,630000`ts
+Sleep, 3500
+Send,670000`ts
+
+return
+
