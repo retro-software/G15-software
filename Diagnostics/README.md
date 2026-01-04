@@ -8,9 +8,11 @@ The standard G-15 diagnostic program provided by Bendix. This is a bootable pape
 
 The tape includes two separate test routines, Test #1 and Test #2. When you start the program, it will immediately type out the value "1" and wait for input from the typewriter.
 
-To run Test #1, which does a cursory check of the logic, enter `0000002` (seven digits) on the typewriter keyboard, followed by the Tab key and the "S" key. The loader will read a few more blocks of tape and start running the test, which will ring the bell at frequent intervals. The test will loop continuously until you stop it. Each iteration only takes a couple of seconds.
+To run Test #1, which does a cursory check of the logic, enter `0000002` (seven digits) on the typewriter keyboard, followed by the Tab key and the "S" key. The loader will read a few more blocks of tape and start running the test, which will ring the bell at frequent intervals. The test will loop continuously until you stop it. Each iteration takes only a couple of seconds.
 
 To run test #2, which does a more thorough check of the logic, enter `0000005` (again, seven digits), followed by the Tab and "S" keys. The loader will read several blocks of tape, then wait again on input from the keyboard. Enter the number of times you want each sub-test to be repeated as a seven-digit hexadecimal number, e.g., `000000w` (12 decimal), followed by the Tab and "S" keys. The minimum valid number of iterations is `0000002`. The loader will read additional tape blocks for each sub-test and run the sub-test for the specified number of times. The bell will ring at intervals. The final sub-test will generate a brief type-out. After the final sub-test, the tape will backspace to the first sub-test and repeat until you stop the system.
+
+If you want to run both tests, load Test #1 as above. When that test has cycled the number of time you want, set the **COMPUTE** switch to the middle position to halt the system, enter **ENABLE** "P" and set the **COMPUTE** switch to **GO**. That will load and run Test #2.
 
 Any errors detected by either test are typed out as hexadecimal values. For additional instructions on this program and discussions of the various error codes, see "PART III - APPENDIX" in the _[G-15 Theory of Operations](http://bitsavers.org/pdf/bendix/g-15/60121600_G15_Theory_Of_Operation_Nov64.pdf)_ manual, starting on PDF page 193.
 
@@ -24,10 +26,12 @@ Another version of the standard G-15 diagnostic program provided by Bendix. This
 
 The logic tests are the same as those for `BXTXT.pti` above, but the test loader behaves slightly differently:
 
-  * After starting the program following its initial load, the program will type out the contents of line 19 on the drum. Depending on the state of the formatting codes stored in words 0-3 of line 2 on the drum, the format of this type-out will vary, but it will take about two minutes to complete at the typewriter's normal speed of 8.6 characters/second. The type-out can be aborted safely by engaging the **ENABLE** switch and typing the "S" key.
+  * After starting the program following its initial load, the program will type out the contents of line 19 on the drum. This appears to be a bug, and the typeout will never terminate. The type-out can be aborted safely by engaging the **ENABLE** switch and typing the "S" key.
   * Following this, the program will type out the hexadecimal checksum of the Number Track and wait for input from the typewriter keyboard.
-  * At this point, enter the code for the test you want to run, _but without leading zeroes_, e.g., just "2" or "5", followed by the Tab and "S" keys.
+  * At this point, enter the code for the test you want to run, _but without leading zeroes_, e.g., just "2" (for Test #1) or "5" (for Test #2), followed by either a Tab or Carriage Return key. The program will automatically sense the entry at that point and load the indicated test.
   * The test will then run as for `BXTST.pti` above. For Test #2, enter the number to sub-test iterations the same way as for `BXTST.pti` as well, i.e., as seven hexadecimal digits.
+
+If you want to run both tests, load Test #1 as above. When that test has cycled the number of time you want, set the **COMPUTE** switch to the middle position to halt the system, enter **ENABLE** "P" and set the **COMPUTE** switch to **GO**. That will load and run Test #2.
 
 There are additional blocks on this tape compared to `BXTST.pti`, starting in block #14. The contents and purpose of these blocks is not presently known, although block #14 appears to be Number Track data and block #15 appears to be the same as the loader routine in block #2 of `BXTST.pti`.
 

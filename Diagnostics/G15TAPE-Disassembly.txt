@@ -152,34 +152,34 @@ Block # 2:      Test Selector/Block Control routine
 0403w73y  201y39z   33678239  0.125461217 i  32  30 0 28 31       30: i TEST I/O READY:31 #1, nL=32, N=30       loop until I/O complete
 0434023y  21u011z   35258655  0.131348725 i  33  32 0  8 31    b  31: i TYPE AR:32 #1, nL=33, N=32              type AR
 0444073y  222039z   35783583  0.133304235 i  34  32 0 28 31       32: i TEST I/O READY:33 #1, nL=34, N=32       loop until I/O complete
-0444483u  222241x   35791901  0.133335222 i  34  34 1  0 29       33: i AD 0:34 > AR+ #108, nL=34, N=34         sum line 0 to AR+
+0444483u  222241x   35791901  0.133335222 i  34  34 1  0 29       33: i AD 0:34 > AR+ #108, nL=34, N=34         sum line 0 to AR+ -- checksum
 04846736  242339v   37893019  0.141162496 i  36  35 0 28 27       34: i TR AR > TEST:35 #1, nL=36, N=35         test AR for zero
-1004y000  8027000  134377472  0.500595093 d   0  39 0  0  0       35: d TR 0:0 > 0:0, nL=1, N=39*               AR zero: no-op, go to 39
+1004y000  8027000  134377472  0.500595093 d   0  39 0  0  0       35: d TR 0:0 > 0:0, nL=1, N=39*               AR zero: no-op, go to 39, checksum okay
 11u3w038  8x1y01w  147972124  0.551239118 d  13  30 0  0 28       36: d TR 0:13 > AR, nL=14, N=30*              AR non-zero: copy 0:13 to AR, go to 30
 04y4u73y  272539z   41046943  0.152911779 i  39  37 0 28 31       37: i TEST I/O READY:38 #1, nL=39, N=37
 0504y33y  282719z   42103199  0.156846639 i  40  39 0 12 31       38: i TYPE IN:39 #1, nL=40, N=39
-0585802y  2w2w017   46317591  0.172546472 i  44  44 0  0 23       39: i TR 0:40 > 23:0 #4, nL=44, N=44*
+0585802y  2w2w017   46317591  0.172546472 i  44  44 0  0 23       39: i TR 0:40 > 23:0 #4, nL=44, N=44*         checksum okay: transfer 0:40-43 to 23:0-4, go to 44
 00000000  0000000          0  0.000000000 i   0   0 0  0  0       40: i TR 0:41 > 0:41 #67, nL=0, N=0*
 00800001 -0400000   -4194304 -0.015625000 i   4   0 4  0  0 1     41: i DP-TR 0:42 > 0:42 #70, nL=4, N=0*
 01000000  0800000    8388608  0.031250000 i   8   0 0  0  0       42: i TR 0:43 > 0:43 #73, nL=8, N=0*
 00000000  0000000          0  0.000000000 i   0   0 0  0  0       43: i TR 0:44 > 0:44 #64, nL=0, N=0*
-05w5u33y  2y2x19z   48419231  0.180375692 i  46  45 0 12 31       44: i TYPE IN:45 #1, nL=46, N=45
-15y5u5z6  uz2x2zv  183685883  0.684283238 d  47  45 0 23 27       45: d TR 23:3 > TEST:47, nL=48, N=45
-1645y5z6  v22z2zv  186839803  0.696032505 d  50  47 0 23 27       46: d TR 23:2 > TEST:50, nL=51, N=47
-0626u03y  313501z   51597343  0.192215081 i  49  53 0  0 31       47: i SET I/O READY:48 #1, nL=49, N=53*
-16u665zy  v5332zz  190001919  0.707812306 d  53  51 0 23 31       48: d CLEAR MQ/ID/PN/IP:53, nL=54, N=51*
+05w5u33y  2y2x19z   48419231  0.180375692 i  46  45 0 12 31       44: i TYPE IN:45 #1, nL=46, N=45              initiate TYPE IN, to 45
+15y5u5z6  uz2x2zv  183685883  0.684283238 d  47  45 0 23 27       45: d TR 23:3 > TEST:47, nL=48, N=45          loop test 23:3 for non-zero, then go to 46
+1645y5z6  v22z2zv  186839803  0.696032505 d  50  47 0 23 27       46: d TR 23:2 > TEST:50, nL=51, N=47          test 23:3; if zero go to 47; if non-zero go to 48
+0626u03y  313501z   51597343  0.192215081 i  49  53 0  0 31       47: i SET I/O READY:48 #1, nL=49, N=53*       if 23:3 is zero, cancel the TYPE IN, go to 53
+16u665zy  v5332zz  190001919  0.707812306 d  53  51 0 23 31       48: d CLEAR MQ/ID/PN/IP:53, nL=54, N=51*      if 23:3 non-zero, clear DP registers, go to 51
 10404000  8202000  136323072  0.507843018 d   2   2 0  0  0       49: d TR 0:2 > 0:2, nL=3, N=2*
 10606000  8303000  137375744  0.511764526 d   3   3 0  0  0       50: d TR 0:3 > 0:3, nL=4, N=3*
-1005y000  802z000  134410240  0.500717163 d   0  47 0  0  0       51: d TR 0:0 > 0:0, nL=1, N=47*
+1005y000  802z000  134410240  0.500717163 d   0  47 0  0  0       51: d TR 0:0 > 0:0, nL=1, N=47*               transfer 0:0 to itself (no-op?), go to 47 and cancel TYPE IN
 10060000  8030000  134414336  0.500732422 d   0  48 0  0  0       52: d TR 0:0 > 0:0, nL=1, N=48*
-1006w5z8  80362zw  134439676  0.500826821 d   0  54 0 23 28       53: d TR 23:0 > AR, nL=1, N=54
-11y6z83u  8z37w1x  150174749  0.559444536 d  15  55 3  0 29       54: d SU 0:15 > AR+, nL=16, N=55
-072703zy  39381zz   59998719  0.223512646 i  57  56 0 15 31       55: i PHOTO TAPE READ:56 #1, nL=57, N=56
-0747073y  3u3839z   61047711  0.227420446 i  58  56 0 28 31       56: i TEST I/O READY:57 #1, nL=58, N=56
-11y7583u  8z3uw1x  150187037  0.559490312 d  15  58 3  0 29       57: d SU 0:15 > AR+, nL=16, N=58
-17876736  vw3v39v  197374875  0.735278707 d  60  59 0 28 27       58: d TR AR > TEST:60, nL=61, N=59
+1006w5z8  80362zw  134439676  0.500826821 d   0  54 0 23 28       53: d TR 23:0 > AR, nL=1, N=54                transfer input number (block count for search) to AR, go to 54
+11y6z83u  8z37w1x  150174749  0.559444536 d  15  55 3  0 29       54: d SU 0:15 > AR+, nL=16, N=55              subtract 1 from block count, go to 55
+072703zy  39381zz   59998719  0.223512646 i  57  56 0 15 31       55: i PHOTO TAPE READ:56 #1, nL=57, N=56      initiate tape read (block search based on input number), go to 56
+0747073y  3u3839z   61047711  0.227420446 i  58  56 0 28 31       56: i TEST I/O READY:57 #1, nL=58, N=56       loop test on IO READY, then go to 57
+11y7583u  8z3uw1x  150187037  0.559490312 d  15  58 3  0 29       57: d SU 0:15 > AR+, nL=16, N=58              subtract 1 from block count, go to 58
+17876736  vw3v39v  197374875  0.735278707 d  60  59 0 28 27       58: d TR AR > TEST:60, nL=61, N=59            test AR; if zero go to 59; if non-zero go to 60
 0610157z -3080uvz  -50858687 -0.189463373 i  48   0 6 21 31 1  b  59: i DP-MARK:60, CD=6 #96, nL=48, N=0*       *** change to line 19, word 0
-17w6y000  vy37000  199454720  0.743026733 d  62  55 0  0  0       60: d TR 0:62 > 0:62, nL=63, N=55*
+17w6y000  vy37000  199454720  0.743026733 d  62  55 0  0  0       60: d TR 0:62 > 0:62, nL=63, N=55*            block count non-zero; do no-op and go to 55 to read next block
 11w1w000  8y0y000  148955136  0.554901123 d  14  14 0  0  0       61: d TR 0:14 > 0:14, nL=15, N=14*
 11y1y000  8z0z000  150007808  0.558822632 d  15  15 0  0  0       62: d TR 0:15 > 0:15, nL=16, N=15*
 12020000  9010000  151060480  0.562744141 d  16  16 0  0  0       63: d TR 0:16 > 0:16, nL=17, N=16*
